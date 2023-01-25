@@ -1,14 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Button,
-  FlatList,
-} from "react-native";
+import { StyleSheet, Text, View, Button, FlatList } from "react-native";
 import React, { useState } from "react";
 import Modal from "./src/components/Modal";
+import AddItem from "./src/components/AddItem";
+
+// Separar los styles y ordenar por carpetas
 
 export default function App() {
   const [textItem, setTextItem] = useState("");
@@ -45,15 +41,11 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Shopping List</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            placeholder="Write your product"
-            style={styles.addItemInput}
-            onChangeText={onHandleChangeItem}
-            value={textItem}
-          />
-          <Button title="Add" onPress={addItem} style={styles.addItemBotton} />
-        </View>
+        <AddItem
+          onChange={onHandleChangeItem}
+          textValue={textItem}
+          onAddItem={addItem}
+        />
       </View>
       <View style={styles.listCountainer}>
         <FlatList
@@ -100,28 +92,10 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 3,
   },
-  inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  addItemInput: {
-    backgroundColor: "#FFFFFF",
-    borderRadius: 15,
-    padding: 10,
-    width: "80%",
-    height: 45,
-    shadowColor: "black",
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    elevation: 3,
-  },
   title: {
     marginBottom: 20,
     fontSize: 30,
     fontWeight: "500",
     color: "#1E283C",
   },
-  Buttons: {},
 });
