@@ -5,6 +5,7 @@ import Modal from "./src/components/Modal";
 import AddItem from "./src/components/AddItem";
 
 // Separar los styles y ordenar por carpetas
+// Marcar como completado
 
 export default function App() {
   const [textItem, setTextItem] = useState("");
